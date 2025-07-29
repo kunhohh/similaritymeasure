@@ -157,13 +157,258 @@
         margin: 0.5rem;
       }
     }
+
+    .upload-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px #6366f133, 0 1.5px 6px #2563eb22;
+      padding: 2rem 2.5rem 1.5rem 2.5rem;
+      margin: 2rem auto 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 420px;
+      border: 1.5px solid #dbeafe;
+      width: 95vw;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+
+    .upload-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+      width: 100%;
+      flex-wrap: wrap;
+    }
+
+    .upload-row input[type="file"] {
+      flex: 1;
+      min-width: 120px;
+      padding: 0.3rem 0.5rem;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      background: #f3f4f6;
+      font-size: 1rem;
+      color: #374151;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .upload-card button {
+      margin-top: 0.5rem;
+      background: linear-gradient(90deg, #6366f1 0%, #2563eb 100%);
+      color: #fff;
+      font-weight: bold;
+      border-radius: 8px;
+      border: none;
+      padding: 0.7rem 2rem;
+      font-size: 1.1rem;
+      box-shadow: 0 2px 8px #6366f133;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .upload-card button:hover {
+      background: linear-gradient(90deg, #2563eb 0%, #6366f1 100%);
+    }
+
+    .image-section {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .image-box {
+      border: 2px solid #6366f1;
+      padding: 1rem;
+      background: #fff;
+      width: 300px;
+      max-width: 90vw;
+      border-radius: 16px;
+      box-sizing: border-box;
+      box-shadow: 0 2px 12px #6366f122;
+      margin-bottom: 1rem;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .image-box h3 {
+      color: #2563eb;
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+      text-align: center;
+    }
+
+    .vote-buttons {
+      margin: 1rem 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .vote-buttons p {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #2563eb;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    #resultTable {
+      margin-bottom: 1.2rem;
+      border-collapse: collapse;
+      width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #resultTable th,
+    #resultTable td {
+      border: 1px solid #d1d5db;
+      padding: 0.4em;
+      text-align: center;
+    }
+
+    #resultTable th {
+      background: #e0e7ff;
+      color: #2563eb;
+      font-weight: bold;
+    }
+
+    .vote-buttons button {
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      margin: 0 0.5rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 1px 4px #6366f122;
+      transition: background 0.2s;
+      display: inline-block;
+    }
+
+    .yes {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .yes:hover {
+      background-color: #45a049;
+    }
+
+    .no {
+      background-color: #f44336;
+      color: white;
+    }
+
+    .no:hover {
+      background-color: #e53935;
+    }
+
+    @media (max-width: 600px) {
+      .upload-card {
+        padding: 1rem 0.5rem 1rem 0.5rem;
+        max-width: 98vw;
+      }
+      .image-section {
+        gap: 0.5rem;
+        flex-direction: row !important;
+        justify-content: center;
+        align-items: center;
+      }
+      .image-box {
+        width: auto;
+        max-width: none;
+        padding: 0.5rem;
+        margin-bottom: 0;
+      }
+      .vote-buttons {
+        font-size: 0.95rem;
+      }
+      h1 {
+        font-size: 1.3rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
+
+    .small-image-box {
+      width: 220px;
+      max-width: 60vw;
+      padding: 1.2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px #6366f122;
+      margin-bottom: 1rem;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      background: #fff;
+      border: 2px solid #2563eb;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .small-survey-image {
+      max-width: 270px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    @media (max-width: 600px) {
+      .image-section {
+        gap: 0.5rem;
+        flex-direction: row !important;
+        justify-content: center;
+        align-items: center;
+      }
+      .small-image-box {
+        width: 80vw;
+        max-width: 80vw;
+        padding: 1rem;
+        margin-bottom: 0.5rem;
+      }
+      .small-survey-image {
+        max-width: 180px;
+        width: 100%;
+      }
+    }
+    @media (min-width: 601px) {
+      .image-section {
+        justify-content: center;
+        align-items: center;
+      }
+      .small-image-box {
+        margin-left: auto;
+        margin-right: auto;
+        width: 300px;
+        max-width: 90vw;
+      }
+      .small-survey-image {
+        max-width: 330px;
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
   <h1 class="main-title">CopyChecker</h1>
 
   <div class="description">
-    私たちは日本の著作権侵害など、知的財産に関する課題を解決しようと情熱を持って取り組んでいるチーム「CREDIT」です。そこでこの「CopyChecker」を提唱します。著作権侵害は、元の作品をどのくらい基にしているかという「依拠性」と、客観的に元の作品と類似しているかという「類似性」に基づいて判断され、このCopyCheckerは主に類似性を計測するために使用することができます。このCopyCheckerは、主に知的財産に関する裁判の準備に際して、被告、原告が使用することや、裁判官が判決を下す参考、また作品を作成したアーティストが著作権に関し、問題が起きないかという検証の手段として使用することを想定しています。ここでは、「画像類似度測定ツール」、「AIによる判断」、そして「専門家に対するアンケート調査」という３つの方法で類似度を計測できるようにしています。
+    私たちは日本の著作権侵害など、知的財産に関する課題を解決しようと情熱を持って取り組んでいるチーム「CREDIT」です。そこでこの「CopyChecker」を提唱します。著作権侵害は、元の作品をどのくらい基にしているかという「依拠性」と、客観的に元の作品と類似しているかという「類似性」に基づいて判断され、このCopyCheckerは主に類似性を計測するために使用することができます。このCopyCheckerは、主に知的財産に関する裁判の準備に際して、被告、原告が使用することや、裁判官が判決を下す参考、また作品を作成したアーティストが著作権に関し、問題が起きないかという検証の手段として使用することを想定しています。ここでは、「画像類似度測定ツール」、「AIによる判断」、そして「専門家に対するアンケート調査」という３つの方法で類似度を計測できるようにしています。<br><br>また、このプラットフォームは、弁護士法第72条の非弁行為に当たるとの懸念が生まれてしまいますが、現状存在する「弁護士ドットコム」（運営：弁護士ドットコム株式会社）と性質上似ているものであるため、その問題はクリアできると考えております。
     <img src="画像1.png" alt="説明用画像" style="margin-top:1.5rem;max-width:666px;width:100%;height:auto;display:block;margin-left:auto;margin-right:auto;" />
   </div>
 
@@ -189,7 +434,7 @@
       <h3 class="sub-title">AIによる判断</h3>
     </div>
     ここでは、いくつかのAIに「作成した画像に関し、著作権侵害が存在するか？」と問いかけます。ここではプラットフォーム上にAIをチャット形式で組み込むことで、それを実現しようと考えましたが、私たちの技術力ではまだできないので、このように参考としてURLを貼らせていただきます。
-    <br>
+    
     <ul style="list-style: none; padding-left: 0;">
       <li><strong>ChatGPT</strong> <br><a href="https://chatgpt.com" target="_blank" style="color:#2563eb;">https://chatgpt.com</a></li>
       <li><strong>Copilot</strong> <br><a href="https://copilot.microsoft.com" target="_blank" style="color:#2563eb;">https://copilot.microsoft.com</a></li>
@@ -204,9 +449,51 @@
     <div class="sub-title-wrapper">
       <h3 class="sub-title">専門家に対するアンケート調査</h3>
     </div>
-    ここでは著作権侵害に関し、弁護士や弁理士、研究機関の方々にアンケート調査ができるようなシステムを導入したいと考えています。しかし、上のAIと同じく、それは現在の私たちの技術力では厳しいと思われるため、ここでは参考として私たちが過去に行ったGoogleアンケートのリンクを貼らせていただきます。<br><br>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfoqPKtIk8JWt1wcsmlVZ7QHGLsz6q7WjKM40qy5izzBM4YfA/viewform?usp=header" target="_blank" style="color:#2563eb; font-weight:bold;">こちらをクリックしてください</a>
-    <img src="画像2.png" alt="アンケート用画像" class="no-shadow-image" style="max-width:666px;width:100%;height:auto;display:block;margin-left:auto;margin-right:auto;" />
+    ここでは著作権侵害に関し、弁護士や弁理士、研究機関の方々にアンケート調査ができるようなシステムを導入したいと考えています。しかし、実際の掲示板を作るのは難しかったため、簡易的なサンプルを作成しました。既存の作品の部分には、元になる作品を、新しく作成した作品には自らが作成した作品を挿入し、「アップロード」を押すと、それぞれを比較し、知的財産権を侵害しているかしていないかを選択できるというものになっています。<br>
+    <div class="upload-card">
+      <div class="upload-row" style="justify-content: flex-start;">
+        <label for="originalImageInput" style="font-weight:700; color:#374151; letter-spacing:1px; text-align:left; min-width:110px; display:block; width:100%; padding-left:1.2rem;">既存の作品</label>
+        <input type="file" accept="image/*" id="originalImageInput" />
+      </div>
+      <div class="upload-row" style="justify-content: flex-start;">
+        <label for="generatedImageInput" style="font-weight:700; color:#374151; letter-spacing:1px; text-align:left; min-width:110px; display:block; width:100%; padding-left:1.2rem;">新しく作成した作品</label>
+        <input type="file" accept="image/*" id="generatedImageInput" />
+      </div>
+      <button onclick="showImages()" style="padding:0.5rem 1.2rem; font-size:1rem; min-width:120px;">アップロード</button>
+    </div>
+    <br>
+    <div class="image-section" id="imageDisplay" style="display:none; justify-content:center; align-items:center;">
+      <div class="image-box small-image-box" style="margin-left:auto; margin-right:auto;">
+        <h3 style="text-align:left;">既存の作品</h3>
+        <img id="originalImage" src="" alt="Original Work" class="small-survey-image" style="max-width:180px; width:100%; height:auto; display:block; margin:0 auto;"/>
+      </div>
+      <div class="image-box small-image-box" style="margin-left:auto; margin-right:auto;">
+        <h3 style="text-align:left;">新しく作成した作品</h3>
+        <img id="generatedImage" src="" alt="Generated Work" class="small-survey-image" style="max-width:180px; width:100%; height:auto; display:block; margin:0 auto;"/>
+      </div>
+    </div>
+    <div class="vote-buttons" id="voting" style="display:none;">
+      <p style="text-align:center;">新しく作成した作品は既存の作品の知的財産を侵害していると考えられますか？</p>
+      <div style="display:flex; justify-content:flex-start; gap:1.2rem; margin-bottom:0.8rem;">
+        <button class="yes" onclick="vote(true)" style="padding:0.5rem 1.2rem; font-size:1rem; min-width:100px;">侵害している</button>
+        <button class="no" onclick="vote(false)" style="padding:0.5rem 1.2rem; font-size:1rem; min-width:100px;">侵害していない</button>
+      </div>
+      <table id="resultTable" style="width:320px; margin:0 auto;">
+        <thead>
+          <tr>
+            <th style="width:160px;">侵害している</th>
+            <th style="width:160px;">侵害していない</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="yesCount" style="width:160px;">0</td>
+            <td id="noCount" style="width:160px;">0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <img src="画像2.png" alt="アンケート用画像" class="no-shadow-image" style="margin-top:1.5rem;max-width:666px;width:100%;height:auto;display:block;margin-left:auto;margin-right:auto;" />
   </div>
 
   <script>
@@ -232,7 +519,7 @@
 
       const ssim = calculateSSIM(canvas1, canvas2);
       const percent = (ssim * 100).toFixed(2);
-      document.getElementById("result").innerText = `SSIM 類似度: ${percent}%（※簡易版）`;
+      document.getElementById("result").innerText = `SSIM 類似度: ${percent}%`;
     }
 
     function loadImage(file) {
@@ -288,6 +575,53 @@
 
       return ((2 * μ1 * μ2 + C1) * (2 * σ12 + C2)) /
              ((μ1 ** 2 + μ2 ** 2 + C1) * (σ1 + σ2 + C2));
+    }
+
+    let yesVotes = 0;
+    let noVotes = 0;
+
+    function updateFileName(spanId, input) {
+      const span = document.getElementById(spanId);
+      if (input.files.length > 0) {
+        span.textContent = input.files[0].name;
+      } else {
+        span.textContent = "";
+      }
+    }
+
+function showImages() {
+  const original = document.getElementById('originalImageInput').files[0];
+  const generated = document.getElementById('generatedImageInput').files[0];
+
+  if (!original || !generated) {
+    alert("2枚の画像を選択してください。");
+    return;
+  }
+
+  document.getElementById('originalImage').src = URL.createObjectURL(original);
+  document.getElementById('generatedImage').src = URL.createObjectURL(generated);
+  document.getElementById('imageDisplay').style.display = 'flex';
+  document.getElementById('voting').style.display = 'flex';
+  document.getElementById('yesCount').textContent = "0";
+  document.getElementById('noCount').textContent = "0";
+  yesVotes = 0;
+  noVotes = 0;
+
+  // Scroll the '既存の作品' image box to the top
+  const originalBox = document.querySelector('.image-box.small-image-box');
+  if (originalBox) {
+    originalBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+    function vote(isInfringement) {
+      if (isInfringement) {
+        yesVotes++;
+        document.getElementById('yesCount').textContent = yesVotes;
+      } else {
+        noVotes++;
+        document.getElementById('noCount').textContent = noVotes;
+      }
     }
   </script>
 </body>
