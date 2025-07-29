@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CopyChecker</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', 'Noto Sans JP', sans-serif;
+      margin: 2rem;
+      background: linear-gradient(to bottom, #e0e7ff 0%, #60a5fa 50%, #2563eb 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .main-title {
+      font-size: 4rem;
+      font-weight: bold;
+      color: #2563eb;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.05em;
+      text-shadow: 0 2px 8px #a5b4fc44;
+      text-align: center;
+    }
+
+    .description {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px #a5b4fc22;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      color: #374151;
+      line-height: 1.7;
+      max-width: 1000px;
+      width: 100%;
+      display: block;
+    }
+
+    .main-image {
+      margin-bottom: 1.5rem;
+      border-radius: 2rem;
+      box-shadow: 0 8px 32px #a5b4fc55, 0 1.5rem 2rem -1rem #10b98122;
+      max-width: 600px;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      background: #fff;
+      display: block;
+      border: 4px solid #e0e7ff;
+    }
+
+    .no-shadow-image {
+      margin-bottom: 1.5rem;
+      border-radius: 2rem;
+      box-shadow: none;
+      max-width: 600px;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      background: #fff;
+      display: block;
+    }
+
+    .sub-title-wrapper {
+      max-width: 1000px;
+      margin: 0 auto 0.7rem auto;
+    }
+
+    .sub-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #3b82f6;
+      letter-spacing: 0.03em;
+      text-shadow: 0 2px 8px #a5b4fc44;
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+    .common-box {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px #a5b4fc22;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      color: #374151;
+      line-height: 1.7;
+      max-width: 1000px;
+      width: 100%;
+      display: block;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    input[type="file"] {
+      padding: 1rem;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    #result {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    @media (min-width: 768px) {
+      .image-preview {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+      }
+
+      img {
+        max-width: 45%;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .description,
+      .common-box,
+      .container,
+      .sub-title-wrapper {
+        max-width: 92vw;
+        box-sizing: border-box;
+        margin-left: 4vw;
+        margin-right: 4vw;
+        padding-left: 4vw;
+        padding-right: 4vw;
+      }
+      img,
+      .no-shadow-image {
+        max-width: 92vw !important;
+        width: 100% !important;
+        height: auto;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+      .main-title {
+        font-size: 2.8rem;
+      }
+      .sub-title {
+        font-size: 1.3rem;
+      }
+      body {
+        margin: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1 class="main-title">CopyChecker</h1>
+
+  <div class="description">
+    私たちは日本の著作権侵害など、知的財産に関する課題を解決しようと情熱を持って取り組んでいるチーム「CREDIT」です。そこでこの「CopyChecker」を提唱します。著作権侵害は、元の作品をどのくらい基にしているかという「依拠性」と、客観的に元の作品と類似しているかという「類似性」に基づいて判断され、このCopyCheckerは主に類似性を計測するために使用することができます。このCopyCheckerは、主に知的財産に関する裁判の準備に際して、被告、原告が使用することや、裁判官が判決を下す参考、また作品を作成したアーティストが著作権に関し、問題が起きないかという検証の手段として使用することを想定しています。ここでは、「画像類似度測定ツール」、「AIによる判断」、そして「専門家に対するアンケート調査」という３つの方法で類似度を計測できるようにしています。
+    <img src="画像1.png" alt="説明用画像" style="margin-top:1.5rem;max-width:666px;width:100%;height:auto;display:block;margin-left:auto;margin-right:auto;" />
+  </div>
+
+  <div class="common-box">
+    <div class="sub-title-wrapper">
+      <h3 class="sub-title">画像類似度測定ツール</h3>
+    </div>
+    ここではOpenCV社が開発したSSIMと呼ばれる画像認識モジュールを用いることで、類似度を数値化するということを試みました。下に２枚の画像を挿入すれば、数値が出てきますので、どうぞお試しください。<br><br>
+    <div class="container">
+      <input type="file" id="img1" accept="image/*">
+      <input type="file" id="img2" accept="image/*">
+      <button onclick="compareImages()">計算</button>
+      <div id="result"></div>
+      <div class="image-preview">
+        <img id="preview1" src="" alt="画像1プレビュー">
+        <img id="preview2" src="" alt="画像2プレビュー">
+      </div>
+    </div>
+  </div>
+
+  <div class="common-box">
+    <div class="sub-title-wrapper">
+      <h3 class="sub-title">AIによる判断</h3>
+    </div>
+    ここでは、いくつかのAIに「作成した画像に関し、著作権侵害が存在するか？」と問いかけます。ここではプラットフォーム上にAIをチャット形式で組み込むことで、それを実現しようと考えましたが、私たちの技術力ではまだできないので、このように参考としてURLを貼らせていただきます。
+    <br>
+    <ul style="list-style: none; padding-left: 0;">
+      <li><strong>ChatGPT</strong> <br><a href="https://chatgpt.com" target="_blank" style="color:#2563eb;">https://chatgpt.com</a></li>
+      <li><strong>Copilot</strong> <br><a href="https://copilot.microsoft.com" target="_blank" style="color:#2563eb;">https://copilot.microsoft.com</a></li>
+      <li><strong>Gemini</strong> <br><a href="https://gemini.google.com" target="_blank" style="color:#2563eb;">https://gemini.google.com</a></li>
+      <li><strong>Grok</strong> <br><a href="https://grok.com" target="_blank" style="color:#2563eb;">https://grok.com</a></li>
+      <li><strong>Claude</strong> <br><a href="https://claude.ai" target="_blank" style="color:#2563eb;">https://claude.ai</a></li>
+    </ul>
+    <img src="画像3.png" alt="AI判断用画像" style="margin-top:1.5rem;max-width:666px;width:100%;height:auto;display:block;margin-left:auto;margin-right:auto;" />
+  </div>
+
+  <div class="common-box">
+    <div class="sub-title-wrapper">
+      <h3 class="sub-title">専門家に対するアンケート調査</h3>
+    </div>
+    ここでは著作権侵害に関し、弁護士や弁理士、研究機関の方々にアンケート調査ができるようなシステムを導入したいと考えています。しかし、上のAIと同じく、それは現在の私たちの技術力では厳しいと思われるため、ここでは参考として私たちが過去に行ったGoogleアンケートのリンクを貼らせていただきます。<br><br>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfoqPKtIk8JWt1wcsmlVZ7QHGLsz6q7WjKM40qy5izzBM4YfA/viewform?usp=header" target="_blank" style="color:#2563eb; font-weight:bold;">こちらをクリックしてください</a>
+    <img src="画像2.png" alt="アンケート用画像" class="no-shadow-image" style="max-width:666px;width:100%;height:auto;display:block;margin-left:auto;margin-right:auto;" />
+  </div>
+
+  <script>
+    const img1Input = document.getElementById("img1");
+    const img2Input = document.getElementById("img2");
+    const preview1 = document.getElementById("preview1");
+    const preview2 = document.getElementById("preview2");
+
+    img1Input.onchange = () => preview1.src = URL.createObjectURL(img1Input.files[0]);
+    img2Input.onchange = () => preview2.src = URL.createObjectURL(img2Input.files[0]);
+
+    async function compareImages() {
+      if (!img1Input.files[0] || !img2Input.files[0]) {
+        alert("2つの画像を選択してください。");
+        return;
+      }
+
+      const img1 = await loadImage(img1Input.files[0]);
+      const img2 = await loadImage(img2Input.files[0]);
+
+      const canvas1 = resizeImage(img1, 360, 360);
+      const canvas2 = resizeImage(img2, 360, 360);
+
+      const ssim = calculateSSIM(canvas1, canvas2);
+      const percent = (ssim * 100).toFixed(2);
+      document.getElementById("result").innerText = `SSIM 類似度: ${percent}%（※簡易版）`;
+    }
+
+    function loadImage(file) {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.src = URL.createObjectURL(file);
+      });
+    }
+
+    function resizeImage(img, width, height) {
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0, width, height);
+      return canvas;
+    }
+
+    function calculateSSIM(c1, c2) {
+      const ctx1 = c1.getContext("2d");
+      const ctx2 = c2.getContext("2d");
+      const d1 = ctx1.getImageData(0, 0, c1.width, c1.height).data;
+      const d2 = ctx2.getImageData(0, 0, c2.width, c2.height).data;
+
+      let μ1 = 0, μ2 = 0, σ1 = 0, σ2 = 0, σ12 = 0;
+      const L = d1.length / 4;
+      const g1 = [], g2 = [];
+
+      for (let i = 0; i < d1.length; i += 4) {
+        const gray1 = 0.299 * d1[i] + 0.587 * d1[i + 1] + 0.114 * d1[i + 2];
+        const gray2 = 0.299 * d2[i] + 0.587 * d2[i + 1] + 0.114 * d2[i + 2];
+        g1.push(gray1);
+        g2.push(gray2);
+        μ1 += gray1;
+        μ2 += gray2;
+      }
+
+      μ1 /= L;
+      μ2 /= L;
+
+      for (let i = 0; i < L; i++) {
+        σ1 += (g1[i] - μ1) ** 2;
+        σ2 += (g2[i] - μ2) ** 2;
+        σ12 += (g1[i] - μ1) * (g2[i] - μ2);
+      }
+
+      σ1 /= L;
+      σ2 /= L;
+      σ12 /= L;
+
+      const C1 = 6.5025, C2 = 58.5225;
+
+      return ((2 * μ1 * μ2 + C1) * (2 * σ12 + C2)) /
+             ((μ1 ** 2 + μ2 ** 2 + C1) * (σ1 + σ2 + C2));
+    }
+  </script>
+</body>
+</html>
