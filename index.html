@@ -63,6 +63,24 @@
       display: block;
     }
 
+    /* PC版のAIチャットボックスの幅をupload-cardと同じにする */
+    @media (min-width: 601px) {
+      .ai-chat-box {
+        max-width: 800px !important;
+        width: 80vw !important;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .ai-chat-message-img,
+      #aiChatImagePreview1,
+      #aiChatImagePreview2 {
+        max-width: 135px !important;
+        max-height: 135px !important;
+        width: 135px !important;
+        height: 135px !important;
+      }
+    }
+
     .sub-title-wrapper {
       max-width: 1000px;
       margin: 0 auto 0.7rem auto;
@@ -103,10 +121,37 @@
     input[type="file"] {
       padding: 1rem;
     }
+    /* Hide default file input text for AIチャット box */
+    #aiChatImageInput1::-webkit-file-upload-button,
+    #aiChatImageInput2::-webkit-file-upload-button {
+      visibility: visible;
+    }
+    #aiChatImageInput1,
+    #aiChatImageInput2 {
+      color: transparent;
+    }
 
     img {
       max-width: 100%;
       height: auto;
+    }
+    /* AIチャットメッセージ画像（PC） */
+    .ai-chat-message-img {
+      max-width: 80px;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 0.3rem;
+      border: 1px solid #dbeafe;
+    }
+    @media (max-width: 600px) {
+      .ai-chat-message-img,
+      #aiChatImagePreview1,
+      #aiChatImagePreview2 {
+        max-width: 90px !important;
+        max-height: 90px !important;
+        width: 90px !important;
+        height: 90px !important;
+      }
     }
 
     #result {
@@ -167,11 +212,59 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      max-width: 660px;
+      max-width: 800px;
       border: 1.5px solid #dbeafe;
-      width: 66vw;
+      width: 80vw;
       min-width: 0;
       box-sizing: border-box;
+    }
+    .ai-chat-box {
+      max-width: 800px;
+      width: 80vw;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
+    @media (max-width: 600px) {
+      .ai-chat-box {
+        max-width: 98vw;
+        width: 98vw;
+      }
+      #aiChatHistory {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+      }
+      .ai-chat-message-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100%;
+      }
+      .ai-chat-message-wrapper:not(.ai-chat-message-left) {
+        align-items: flex-end !important;
+      }
+      .ai-chat-message-left {
+        align-items: flex-start !important;
+      }
+      .ai-chat-message-text {
+        background: #e0e7ff;
+        color: #2563eb;
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        margin-bottom: 0.3rem;
+        font-size: 1rem;
+        max-width: 80%;
+        word-break: break-word;
+        margin-left: auto !important;
+        text-align: right !important;
+      }
+      .ai-chat-message-left .ai-chat-message-text {
+        text-align: left !important;
+        background: #fffbe7 !important;
+        color: #374151 !important;
+        margin-right: auto !important;
+        margin-left: 0 !important;
+      }
     }
 
     .upload-row {
@@ -362,12 +455,12 @@
       justify-content: center;
     }
     .small-survey-image {
-      max-width: 270px;
-      width: 100%;
-      height: auto;
+      max-width: 800px;
+      border: 1.5px solid #dbeafe;
+      width: 80vw;
+      min-width: 0;
+      box-sizing: border-box;
       display: block;
-      margin: 0 auto;
-    }
     @media (max-width: 600px) {
       .image-section {
         gap: 0.5rem;
@@ -394,21 +487,89 @@
       .small-image-box {
         margin-left: auto;
         margin-right: auto;
-        width: 300px;
-        max-width: 90vw;
+        width: 600px;
+        max-width: 98vw;
       }
       .small-survey-image {
-        max-width: 330px;
+        max-width: 600px;
         width: 100%;
       }
+      .upload-card {
+        max-width: 1200px !important;
+        width: 98vw !important;
+      }
+      .no-shadow-image {
+        max-width: 1200px !important;
+        width: 98vw !important;
+      }
+    }
+
+    /* 追加: スマートフォン版でも右揃えにするCSS */
+    @media (max-width: 600px) {
+      .ai-chat-message-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-end !important;
+      }
+      .ai-chat-message-text {
+        text-align: right !important;
+        background: #e0e7ff;
+        color: #2563eb;
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        margin-bottom: 0.3rem;
+        font-size: 1rem;
+        max-width: 80%;
+        word-break: break-word;
+        margin-left: auto !important;
+      }
+    }
+
+    /* 追加: 左揃えAIメッセージ用CSS */
+    @media (max-width: 600px) {
+      .ai-chat-message-left {
+        align-items: flex-start !important;
+      }
+      .ai-chat-message-left .ai-chat-message-text {
+        text-align: left !important;
+        background: #fffbe7 !important;
+        color: #374151 !important;
+        margin-right: auto !important;
+        margin-left: 0 !important;
+      }
+    }
+    @media (min-width: 601px) {
+      .ai-chat-message-left {
+        align-items: flex-start !important;
+      }
+      .ai-chat-message-left .ai-chat-message-text {
+        text-align: left !important;
+        background: #fffbe7 !important;
+        color: #374151 !important;
+        margin-right: auto !important;
+        margin-left: 0 !important;
+      }
+    }
+
+    #aiChatHistory {
+      min-height: 330px;
+      max-height: 600px;
+      overflow-y: auto;
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid #dbeafe;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      font-size: 1rem;
     }
   </style>
 </head>
 <body>
-  <h1 class="main-title">CopyChecker</h1>
+  <img src="画像4.png" alt="ロゴ" style="display:block;margin:0 auto 1.2rem auto;max-width:180px;width:100%;height:auto;" />
+  
 
   <div class="description">
-    私たちは日本の著作権侵害など、知的財産に関する課題を解決しようと情熱を持って取り組んでいるチーム「CREDIT」です。そこでこの「CopyChecker」を提唱します。著作権侵害は、元の作品をどのくらい基にしているかという「依拠性」と、客観的に元の作品と類似しているかという「類似性」に基づいて判断され、このCopyCheckerは主に類似性を計測するために使用することができます。このCopyCheckerは、主に知的財産に関する裁判の準備に際して、被告、原告が使用することや、裁判官が判決を下す参考、また作品を作成したアーティストが著作権に関し、問題が起きないかという検証の手段として使用することを想定しています。ここでは、「画像類似度測定ツール」、「AIによる判断」、そして「専門家に対するアンケート調査」という３つの方法で類似度を計測できるようにしています。<br><br>また、このプラットフォームは、弁護士法第72条の非弁行為に当たるとの懸念が生まれてしまいますが、現状存在する「弁護士ドットコム」（運営：弁護士ドットコム株式会社）と性質上似ているものであるため、その問題はクリアできると考えております。
+    私たちは日本の著作権侵害など、知的財産に関する課題を解決しようと情熱を持って取り組んでいるチーム「CREDIT」です。そこでこの「CopyChecker」を提唱します。著作権侵害は、元の作品をどのくらい基にしているかという「依拠性」と、客観的に元の作品と類似しているかという「類似性」に基づいて判断され、このCopyCheckerは主に類似性を計測するために使用することができます。このCopyCheckerは、知的財産に関する裁判の準備に際して、被告、原告が使用することや、裁判官が判決を下す参考、また作品を作成したアーティストが著作権に関し、問題が起きないかという検証の手段として使用することを想定しています。ここでは、「画像類似度測定ツール」、「AIによる判断」、そして「専門家に対するアンケート調査」という３つの方法で類似度を計測できるようにしています。<br><br>また、このプラットフォームは、弁護士法第72条の非弁行為に当たるとの懸念が生まれてしまいますが、現状存在する「弁護士ドットコム」（運営：弁護士ドットコム株式会社）と性質上似ているものであるため、その問題はクリアできると考えております。
     <img src="画像1.png" alt="説明用画像" style="margin-top:1.5rem;max-width:666px;width:100%;height:auto;display:block;margin-left:auto;margin-right:auto;" />
   </div>
 
@@ -416,40 +577,64 @@
     <div class="sub-title-wrapper">
       <h3 class="sub-title">画像類似度測定ツール</h3>
     </div>
-    ここではOpenCV社が開発したSSIMと呼ばれる画像認識モジュールを用いることで、類似度を数値化するということを試みました。下に２枚の画像を挿入すれば、数値が出てきますので、どうぞお試しください。<br><br>
-    <div class="container">
-      <input type="file" id="img1" accept="image/*">
-      <input type="file" id="img2" accept="image/*">
-      <button onclick="compareImages()">計算</button>
-      <div id="result"></div>
-      <div class="image-preview">
-        <img id="preview1" src="" alt="画像1プレビュー">
-        <img id="preview2" src="" alt="画像2プレビュー">
+    ここではOpenCVというライブラリ上で、SSIMと呼ばれる指標を用いて作成した画像認識モジュールを用いることで、類似度を数値化するということを試みました。下に２枚の画像を挿入し「アップロード」を押すと、類似度が表示されます。<br><br>
+    <div class="upload-card">
+      <div class="upload-row" style="justify-content: flex-start;">
+        <label for="similarityOriginalInput" style="font-weight:700; color:#374151; letter-spacing:1px; text-align:left; min-width:110px; display:block; width:100%; padding-left:1.2rem;">既存の作品</label>
+        <input type="file" accept="image/*" id="similarityOriginalInput" />
+      </div>
+      <div class="upload-row" style="justify-content: flex-start;">
+        <label for="similarityGeneratedInput" style="font-weight:700; color:#374151; letter-spacing:1px; text-align:left; min-width:110px; display:block; width:100%; padding-left:1.2rem;">新しく作成した作品</label>
+        <input type="file" accept="image/*" id="similarityGeneratedInput" />
+      </div>
+      <button onclick="showSimilarityImages()" style="padding:0.5rem 1.2rem; font-size:1rem; min-width:120px;">アップロード</button>
+    </div>
+    <br>
+    <div class="image-section" id="similarityImageDisplay" style="display:none; justify-content:center; align-items:center;">
+      <div class="image-box small-image-box" style="margin-left:auto; margin-right:auto; width:340px; max-width:98vw;">
+        <h3 style="text-align:left;">既存の作品</h3>
+        <img id="similarityOriginalImage" src="" alt="Original Work" class="small-survey-image" style="max-width:260px; width:100%; height:auto; display:block; margin:0 auto;"/>
+      </div>
+      <div class="image-box small-image-box" style="margin-left:auto; margin-right:auto; width:340px; max-width:98vw;">
+        <h3 style="text-align:left;">新しく作成した作品</h3>
+        <img id="similarityGeneratedImage" src="" alt="Generated Work" class="small-survey-image" style="max-width:260px; width:100%; height:auto; display:block; margin:0 auto;"/>
       </div>
     </div>
+    <div id="similarityResult" style="text-align:center; font-size:2.2rem; font-weight:bold; margin-bottom:1rem; display:none;"></div>
   </div>
 
   <div class="common-box">
     <div class="sub-title-wrapper">
       <h3 class="sub-title">AIによる判断</h3>
     </div>
-    ここでは、いくつかのAIに「作成した画像に関し、著作権侵害が存在するか？」と問いかけます。ここではプラットフォーム上にAIをチャット形式で組み込むことで、それを実現しようと考えましたが、私たちの技術力ではまだできないので、このように参考としてURLを貼らせていただきます。
-    
-    <ul style="list-style: none; padding-left: 0;">
-      <li><strong>ChatGPT</strong> <br><a href="https://chatgpt.com" target="_blank" style="color:#2563eb;">https://chatgpt.com</a></li>
-      <li><strong>Copilot</strong> <br><a href="https://copilot.microsoft.com" target="_blank" style="color:#2563eb;">https://copilot.microsoft.com</a></li>
-      <li><strong>Gemini</strong> <br><a href="https://gemini.google.com" target="_blank" style="color:#2563eb;">https://gemini.google.com</a></li>
-      <li><strong>Grok</strong> <br><a href="https://grok.com" target="_blank" style="color:#2563eb;">https://grok.com</a></li>
-      <li><strong>Claude</strong> <br><a href="https://claude.ai" target="_blank" style="color:#2563eb;">https://claude.ai</a></li>
-    </ul>
-    <img src="画像3.png" alt="AI判断用画像" style="margin-top:1.5rem;max-width:666px;width:100%;height:auto;display:block;margin-left:auto;margin-right:auto;" />
+    ここでは、いくつかのAIに「作成した画像に関し、著作権侵害が存在するか？」と問いかけます。ここではAIをチャット形式で組み込むことで、それを実現しようと考えました。下に２枚の画像を挿入し「送信」を押すと、AIがそれぞれの画像を比較し、著作権侵害が存在するかどうかを判断します。<br>(現状のAIの回答はサンプルです。)<br>
+      <br><div class="ai-chat-box" style="margin:0 auto 1.2rem auto; background:#f3f4f6; border-radius:12px; box-shadow:0 2px 12px #a5b4fc22; padding:1.2rem; max-width:382px; width:100%; display:block;">
+      <h4 style="color:#2563eb; margin-bottom:0.7rem;">AIチャット</h4>
+      <div id="aiChatHistory" style="min-height:330px; max-height:600px; overflow-y:auto; background:#fff; border-radius:8px; border:1px solid #dbeafe; padding:0.8rem; margin-bottom:1rem; font-size:1rem;"></div>
+      <div style="margin-bottom:0.7rem; display:flex; gap:4.5rem; justify-content:center; align-items:center;">
+        <div style="display:flex; flex-direction:column; align-items:center; min-width:140px; width:140px;">
+          <span style="font-size:0.85rem; font-weight:700; color:#374151; margin-bottom:0.2rem; display:block; text-align:center; width:100%;">既存の作品</span>
+          <input type="file" accept="image/*" id="aiChatImageInput1" style="width:120px; margin-bottom:0.3rem; font-size:1rem; display:block; margin-left:auto; margin-right:auto;" onchange="previewAIChatImage(1)" />
+          <img id="aiChatImagePreview1" src="" style="display:none; max-width:80px; height:auto; border-radius:8px; margin-bottom:0.3rem; margin-left:auto; margin-right:auto;" />
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; min-width:140px; width:140px;">
+          <span style="font-size:0.85rem; font-weight:700; color:#374151; margin-bottom:0.2rem; display:block; text-align:center; width:100%;">新しく作成した作品</span>
+          <input type="file" accept="image/*" id="aiChatImageInput2" style="width:120px; margin-bottom:0.3rem; font-size:1rem; display:block; margin-left:auto; margin-right:auto;" onchange="previewAIChatImage(2)" />
+          <img id="aiChatImagePreview2" src="" style="display:none; max-width:80px; height:auto; border-radius:8px; margin-bottom:0.3rem; margin-left:auto; margin-right:auto;" />
+        </div>
+      </div>
+      <div style="display:flex; gap:0.5rem;">
+        <input type="text" id="aiChatInput" placeholder="AIに質問してください..." style="flex:1; padding:0.6rem 1rem; border-radius:8px; border:1px solid #d1d5db; font-size:1rem;" />
+        <button onclick="sendAIChat()" style="background:#2563eb; color:#fff; font-weight:bold; border-radius:8px; border:none; padding:0.6rem 1.2rem; font-size:1rem; cursor:pointer;">送信</button>
+      </div>
+    </div>
   </div>
 
   <div class="common-box">
     <div class="sub-title-wrapper">
       <h3 class="sub-title">専門家に対するアンケート調査</h3>
     </div>
-    ここでは著作権侵害に関し、弁護士や弁理士、研究機関の方々にアンケート調査ができるようなシステムを導入したいと考えています。しかし、実際の掲示板を作るのは難しかったため、簡易的なサンプルを作成しました。既存の作品の部分には、元になる作品を、新しく作成した作品には自らが作成した作品を挿入し、「アップロード」を押すと、それぞれを比較し、知的財産権を侵害しているかしていないかを選択できるというものになっています。<br>
+    ここでは著作権侵害に関し、弁護士や弁理士、研究機関の方々にアンケート調査ができるようなシステムを導入したいと考えています。そこで、簡易的なサンプルを作成しました。下に２枚の画像を挿入し「アップロード」を押すと、専門家の方々が、著作権侵害が存在するかどうかを判断し、ボタンを押して投票するというものになっています。<br>(現状、実際にアンケート調査を行うことはできません。)<br>
     <div class="upload-card">
       <div class="upload-row" style="justify-content: flex-start;">
         <label for="originalImageInput" style="font-weight:700; color:#374151; letter-spacing:1px; text-align:left; min-width:110px; display:block; width:100%; padding-left:1.2rem;">既存の作品</label>
@@ -463,13 +648,13 @@
     </div>
     <br>
     <div class="image-section" id="imageDisplay" style="display:none; justify-content:center; align-items:center;">
-      <div class="image-box small-image-box" style="margin-left:auto; margin-right:auto;">
+      <div class="image-box small-image-box" style="margin-left:auto; margin-right:auto; width:340px; max-width:98vw;">
         <h3 style="text-align:left;">既存の作品</h3>
-        <img id="originalImage" src="" alt="Original Work" class="small-survey-image" style="max-width:180px; width:100%; height:auto; display:block; margin:0 auto;"/>
+        <img id="originalImage" src="" alt="Original Work" class="small-survey-image" style="max-width:260px; width:100%; height:auto; display:block; margin:0 auto;"/>
       </div>
-      <div class="image-box small-image-box" style="margin-left:auto; margin-right:auto;">
+      <div class="image-box small-image-box" style="margin-left:auto; margin-right:auto; width:340px; max-width:98vw;">
         <h3 style="text-align:left;">新しく作成した作品</h3>
-        <img id="generatedImage" src="" alt="Generated Work" class="small-survey-image" style="max-width:180px; width:100%; height:auto; display:block; margin:0 auto;"/>
+        <img id="generatedImage" src="" alt="Generated Work" class="small-survey-image" style="max-width:260px; width:100%; height:auto; display:block; margin:0 auto;"/>
       </div>
     </div>
     <div class="vote-buttons" id="voting" style="display:none;">
@@ -493,33 +678,39 @@
         </tbody>
       </table>
     </div>
-    <img src="画像2.png" alt="アンケート用画像" class="no-shadow-image" style="margin-top:1.5rem;max-width:666px;width:100%;height:auto;display:block;margin-left:auto;margin-right:auto;" />
   </div>
 
   <script>
-    const img1Input = document.getElementById("img1");
-    const img2Input = document.getElementById("img2");
-    const preview1 = document.getElementById("preview1");
-    const preview2 = document.getElementById("preview2");
+    // 画像類似度測定ツール用の新しいUIに対応した関数
+    async function showSimilarityImages() {
+      const original = document.getElementById('similarityOriginalInput').files[0];
+      const generated = document.getElementById('similarityGeneratedInput').files[0];
 
-    img1Input.onchange = () => preview1.src = URL.createObjectURL(img1Input.files[0]);
-    img2Input.onchange = () => preview2.src = URL.createObjectURL(img2Input.files[0]);
-
-    async function compareImages() {
-      if (!img1Input.files[0] || !img2Input.files[0]) {
-        alert("2つの画像を選択してください。");
+      if (!original || !generated) {
+        alert("2枚の画像を選択してください。");
         return;
       }
 
-      const img1 = await loadImage(img1Input.files[0]);
-      const img2 = await loadImage(img2Input.files[0]);
+      // 画像表示
+      document.getElementById('similarityOriginalImage').src = URL.createObjectURL(original);
+      document.getElementById('similarityGeneratedImage').src = URL.createObjectURL(generated);
+      document.getElementById('similarityImageDisplay').style.display = 'flex';
+      // 画像類似度測定ツールの画像表示領域を一番上にスクロール
+      const similarityImageDisplay = document.getElementById('similarityImageDisplay');
+      if (similarityImageDisplay) {
+        similarityImageDisplay.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
 
+      // SSIM計算
+      const img1 = await loadImage(original);
+      const img2 = await loadImage(generated);
       const canvas1 = resizeImage(img1, 360, 360);
       const canvas2 = resizeImage(img2, 360, 360);
-
       const ssim = calculateSSIM(canvas1, canvas2);
       const percent = (ssim * 100).toFixed(2);
-      document.getElementById("result").innerText = `SSIM 類似度: ${percent}%`;
+      const resultDiv = document.getElementById('similarityResult');
+      resultDiv.innerText = `SSIM 類似度: ${percent}%`;
+      resultDiv.style.display = 'block';
     }
 
     function loadImage(file) {
@@ -589,30 +780,103 @@
       }
     }
 
-function showImages() {
-  const original = document.getElementById('originalImageInput').files[0];
-  const generated = document.getElementById('generatedImageInput').files[0];
-
-  if (!original || !generated) {
-    alert("2枚の画像を選択してください。");
-    return;
-  }
-
-  document.getElementById('originalImage').src = URL.createObjectURL(original);
-  document.getElementById('generatedImage').src = URL.createObjectURL(generated);
-  document.getElementById('imageDisplay').style.display = 'flex';
-  document.getElementById('voting').style.display = 'flex';
-  document.getElementById('yesCount').textContent = "0";
-  document.getElementById('noCount').textContent = "0";
-  yesVotes = 0;
-  noVotes = 0;
-
-  // Scroll the '既存の作品' image box to the top
-  const originalBox = document.querySelector('.image-box.small-image-box');
-  if (originalBox) {
-    originalBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+// AIチャット画像プレビュー（2枚対応）
+function previewAIChatImage(num) {
+  const input = document.getElementById('aiChatImageInput' + num);
+  const preview = document.getElementById('aiChatImagePreview' + num);
+  if (input.files && input.files[0]) {
+    preview.src = URL.createObjectURL(input.files[0]);
+    preview.style.display = 'block';
+  } else {
+    preview.src = '';
+    preview.style.display = 'none';
   }
 }
+
+// AIチャット送信機能（画像・テキストをメッセージ形式で表示）
+function sendAIChat() {
+  const chatHistory = document.getElementById('aiChatHistory');
+  const inputText = document.getElementById('aiChatInput').value.trim();
+  const imageInput1 = document.getElementById('aiChatImageInput1');
+  const imageInput2 = document.getElementById('aiChatImageInput2');
+  // ファイル未選択なら送信不可
+  if (!(imageInput1.files && imageInput1.files[0]) && !(imageInput2.files && imageInput2.files[0])) {
+    alert('画像ファイルを1枚以上選択してください。');
+    return;
+  }
+  let messageHTML = '<div class="ai-chat-message-wrapper" style="margin-bottom:0.7rem; display:flex; flex-direction:column; align-items:flex-end;">';
+  // 画像1
+  if (imageInput1.files && imageInput1.files[0]) {
+    const imgURL1 = URL.createObjectURL(imageInput1.files[0]);
+    messageHTML += `<img src='${imgURL1}' class='ai-chat-message-img' />`;
+  }
+  // 画像2
+  if (imageInput2.files && imageInput2.files[0]) {
+    const imgURL2 = URL.createObjectURL(imageInput2.files[0]);
+    messageHTML += `<img src='${imgURL2}' class='ai-chat-message-img' />`;
+  }
+  // テキスト
+  if (inputText) {
+    messageHTML += `<div class='ai-chat-message-text' style='background:#e0e7ff; color:#2563eb; border-radius:8px; padding:0.5rem 1rem; margin-bottom:0.3rem; font-size:1rem; max-width:80%; word-break:break-word; text-align:right;'>${inputText}</div>`;
+  }
+  messageHTML += '</div>';
+  chatHistory.innerHTML += messageHTML;
+
+  // AIからの返信（ランダム左揃え）
+  const aiMessages = [
+    '既存の作品と、あなたの作品を見比べると、○○という観点で著作権を侵害しているように見受けられます。専門家の方に相談することをお勧めします。',
+    '既存の作品と、あなたの作品を見比べると、○○という観点で著作権を侵害していないように見受けられます。専門家の方に相談することをお勧めします。',
+    '既存の作品と、あなたの作品を見比べると、○○という観点で著作権を侵害しているように見受けられます。このような事例は過去にもあり、20XX年の▽△事件が・・・・です。専門家の方に相談することをお勧めします。',
+    '既存の作品と、あなたの作品を見比べると、○○という観点で著作権を顕著に侵害しているように見受けられます。専門家の方に相談することをお勧めします。',
+    '既存の作品と、あなたの作品を見比べると、○○という観点で著作権を侵害していないように見受けられます。しかし、確実ではないため、専門家の方に相談することをお勧めします。',
+    '既存の作品と、あなたの作品を見比べると、著作権侵害は認められそうではありませんが、××さんの作品に関し、著作権を侵害している可能性があります。専門家の方に相談することをお勧めします。'
+  ];
+  const randomIndex = Math.floor(Math.random() * aiMessages.length);
+  const aiReply = aiMessages[randomIndex];
+  let aiHTML = '<div class="ai-chat-message-wrapper ai-chat-message-left" style="margin-bottom:0.7rem; display:flex; flex-direction:column; align-items:flex-start;">';
+  aiHTML += `<div class='ai-chat-message-text' style='background:#fffbe7; color:#374151; border-radius:8px; padding:0.5rem 1rem; margin-bottom:0.3rem; font-size:1rem; max-width:80%; word-break:break-word; text-align:left;'>${aiReply}</div>`;
+  aiHTML += '</div>';
+  chatHistory.innerHTML += aiHTML;
+
+  // 入力欄・画像プレビューをリセット
+  document.getElementById('aiChatInput').value = '';
+  imageInput1.value = '';
+  imageInput2.value = '';
+  document.getElementById('aiChatImagePreview1').src = '';
+  document.getElementById('aiChatImagePreview1').style.display = 'none';
+  document.getElementById('aiChatImagePreview2').src = '';
+  document.getElementById('aiChatImagePreview2').style.display = 'none';
+  // AIチャットBox自体の一番上にスクロール
+  const aiChatBox = document.querySelector('.ai-chat-box');
+  if (aiChatBox) {
+    aiChatBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+    function showImages() {
+      const original = document.getElementById('originalImageInput').files[0];
+      const generated = document.getElementById('generatedImageInput').files[0];
+
+      if (!original || !generated) {
+        alert("2枚の画像を選択してください。");
+        return;
+      }
+
+      document.getElementById('originalImage').src = URL.createObjectURL(original);
+      document.getElementById('generatedImage').src = URL.createObjectURL(generated);
+      document.getElementById('imageDisplay').style.display = 'flex';
+      document.getElementById('voting').style.display = 'flex';
+      document.getElementById('yesCount').textContent = "0";
+      document.getElementById('noCount').textContent = "0";
+      yesVotes = 0;
+      noVotes = 0;
+
+      // アンケート調査の画像表示領域を一番上にスクロール
+      const imageDisplay = document.getElementById('imageDisplay');
+      if (imageDisplay) {
+        imageDisplay.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
 
     function vote(isInfringement) {
       if (isInfringement) {
