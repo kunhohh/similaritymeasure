@@ -580,13 +580,14 @@
   
 
   <div class="description">
-    私たちは日本の著作権侵害など、知的財産に関する課題を解決しようと情熱を持って取り組んでいるチーム「CREDIT」です。そこでこの「CopyChecker」を提唱します。著作権侵害は、元の作品をどのくらい基にしているかという「依拠性」と、客観的に元の作品と類似しているかという「類似性」に基づいて判断され、このCopyCheckerは主に類似性を計測するために使用することができます。このCopyCheckerは、知的財産に関する裁判の準備に際して、被告、原告が使用することや、裁判官が判決を下す参考、また作品を作成したアーティストが著作権に関し、問題が起きないかという検証の手段として使用することを想定しています。ここでは、「画像類似度測定ツール」、「AIによる判断」、そして「専門家に対するアンケート調査」という３つの方法で類似度を計測できるようにしています。<br><br>また、このプラットフォームは、弁護士法第72条の非弁行為に当たるとの懸念が生まれてしまいますが、現状存在する「弁護士ドットコム」（運営：弁護士ドットコム株式会社）と性質上似ているものであるため、その問題はクリアできると考えております。
+    <h3 style="color:#3b82f6; font-size:1.3rem; font-weight:700; letter-spacing:0.03em; text-shadow:0 2px 8px #a5b4fc44; text-align:center; margin-top:0.5rem; margin-bottom:1.2rem;">サービスの概要</h3>
+    私たちは日本の著作権侵害など、知的財産に関する課題を解決しようと情熱を持って取り組んでいるチーム「CREDIT」です。そこでこの「CopyChecker」を提唱します。このサービスは、主に知的財産権の侵害の判定をするのを手助けするサービスであり、それに付随して、知的財産権に関するデータベースの提供や、弁護士や弁理士の広告業務を行いというものです。通常、知的財産権の侵害（特に著作権の侵害）は既存の作品をどのくらい基にしているかという「依拠性」と、客観的に既存の作品と類似しているかという「類似性」に基づいて判断され、このサービスは主に類似性を計測するために使用することができます。<br>用途としては、知的財産に関する裁判の準備に際して、被告、原告が使用することや、裁判官が判決を下す参考、また作品を作成したアーティストが著作権に関し、問題が起きないかという検証の手段として使用されることを想定しています。ここでは、「画像類似度測定ツール」、「AIによる判断」、そして「専門家に対するアンケート調査」という３つの方法で類似度を計測できるようにしています。<br>また、このプラットフォームは、弁護士法第72条の非弁行為に当たるとの懸念が生まれてしまいますが、現状存在する「弁護士ドットコム」（運営：弁護士ドットコム株式会社）と性質上似ているものであるため、その問題はクリアできると考えております。
     <img src="画像1.png" alt="説明用画像" style="margin-top:1.5rem;max-width:666px;width:100%;height:auto;display:block;margin-left:auto;margin-right:auto;" />
   </div>
 
   <div class="common-box">
     <div class="sub-title-wrapper">
-      <h3 class="sub-title">画像類似度測定ツール</h3>
+      <h3 class="sub-title">知的財産権の侵害の判定方法（１）<br>画像類似度測定ツール</h3>
     </div>
     ここではOpenCVというライブラリ上で、SSIMと呼ばれる指標を用いて作成した画像認識モジュールを用いることで、類似度を数値化するということを試みました。下に２枚の画像を挿入し「アップロード」を押すと、類似度が表示されます。<br><br>
     <div class="upload-card">
@@ -616,7 +617,7 @@
 
   <div class="common-box">
     <div class="sub-title-wrapper">
-      <h3 class="sub-title">AIによる判断</h3>
+      <h3 class="sub-title">知的財産権の侵害の判定方法（２）<br>AIによる判断</h3>
     </div>
     ここでは、いくつかのAIに「作成した画像に関し、著作権侵害が存在するか？」と問いかけます。ここではAIをチャット形式で組み込むことで、それを実現しようと考えました。下に２枚の画像を挿入し「送信」を押すと、AIがそれぞれの画像を比較し、著作権侵害が存在するかどうかを判断します。<br>(現状のAIの回答はサンプルです。)<br>
       <br><div class="ai-chat-box" style="margin:0 auto 1.2rem auto; background:#f3f4f6; border-radius:12px; box-shadow:0 2px 12px #a5b4fc22; padding:1.2rem; display:block;">
@@ -643,7 +644,7 @@
 
   <div class="common-box">
     <div class="sub-title-wrapper">
-      <h3 class="sub-title">専門家に対するアンケート調査</h3>
+      <h3 class="sub-title">知的財産権の侵害の判定方法（３）<br>専門家に対するアンケート調査</h3>
     </div>
     ここでは著作権侵害に関し、弁護士や弁理士、研究機関の方々にアンケート調査ができるようなシステムを導入したいと考えています。そこで、簡易的なサンプルを作成しました。下に２枚の画像を挿入し「アップロード」を押すと、専門家の方々が、著作権侵害が存在するかどうかを判断し、ボタンを押して投票するというものになっています。<br>(現状、実際にアンケート調査を行うことはできません。)<br>
     <div class="upload-card">
@@ -690,6 +691,19 @@
       </table>
     </div>
   </div>
+    <!-- フォームなしの白いBox（同じ様式） -->
+    <div class="common-box">
+      <div class="sub-title-wrapper">
+        <h3 class="sub-title" style="margin-bottom:0.3rem;">その他の業務</h3>
+      </div>
+      <div style="font-size:1.1rem; color:#374151; line-height:1.7; text-align:center; padding:0.7rem 0 1.5rem 0;">
+        <span style="display:block; text-align:left;">
+          その他の業務として、このサイトで得られた結果や情報を、先ほどAIの部分で読み込ませた、膨大な量の著作権や知的財産権に関する判例や事件と共にデータベース化することと、弁理士や弁護士を知的財産に関して懸念点がある人と広告を通じてマッチングさせることも考えています。
+        </span>
+        <img src="画像5.png" alt="その他の業務画像" style="margin-top:1.2rem;max-width:666px;width:100%;height:auto;display:block;margin-left:auto;margin-right:auto;" />
+        <img src="画像6.png" alt="その他の業務画像2" style="margin-top:1.2rem;max-width:666px;width:100%;height:auto;display:block;margin-left:auto;margin-right:auto;" />
+      </div>
+    </div>
 
   <script>
     // 画像類似度測定ツール用の新しいUIに対応した関数
